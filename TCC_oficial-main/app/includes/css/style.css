@@ -1,0 +1,949 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
+/* Works on Firefox */
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: gainsboro;
+}
+
+header {
+    padding-top: 5px;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #244bbf white;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: white;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #244bbf;
+    border: 3px solid white;
+}
+
+
+
+
+.main {
+    background-color: white;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.footer {
+    background-color: #244bbf;
+    color: #FFFFFF;
+    font-family: 'Rubik', 'sans-serif';
+}
+
+.footerConfig {
+    font-size: 12pt;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    text-align: center;
+}
+
+.btn-1 {
+    background-color: #244bbf;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 7rem;
+    height: 3rem;
+    border-radius: 1rem;
+    margin-top: 25%;
+    margin-right: 2%;
+    font-family: 'Rubik', sans-serif;
+}
+
+.btn-2 {
+    background-color: #ff8f2d;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 7rem;
+    height: 3rem;
+    border-radius: 1rem;
+    margin-top: 25%;
+    margin-left: 2%;
+    font-family: 'Rubik', sans-serif;
+}
+
+.btn-1:hover {
+    background-color: #60A1F5;
+}
+
+.btn-2:hover {
+    background-color: #ffb26f;
+}
+
+.tamanhoCarrosel {
+    width: 90%;
+    height: 600px;
+    margin-left: 5%;
+    margin-right: 5%;
+    overflow: hidden;
+    margin-bottom: 5%;
+}
+
+.scrool {
+    overflow-x: hidden;
+    margin-bottom: 30px;
+}
+
+.scrool:hover {
+    overflow-x: auto;
+}
+
+
+.quadradinhos {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    width: 1320px;
+}
+
+
+
+.quadradinho {
+    width: 198px;
+    height: 198px;
+    background-color: #60A1F5;
+    margin-left: 66px;
+    margin-right: 66px;
+}
+
+.infoQuad{
+    display: none;
+}
+
+.quadradinho:hover .infoQuad{
+    display: block;
+    width: 198;
+    height: 50px;
+    justify-content: left;
+}
+
+.album {
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+
+/* CAROUSEL */
+
+.corpo,
+.alinhamento-carousel {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.alinhamento-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+    font-family: 'Rubik', sans-serif;
+    transition: background .4s ease-in;
+
+    &.blue {
+        background-color: #ff8f2d;
+    }
+}
+
+
+.card {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: transform .4s ease;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.carouseu-container {
+    width: 100%;
+    max-width: 800px;
+    max-height: 600px;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+.imgCarousel {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+#item-1:checked~.cards #song-3,
+#item-2:checked~.cards #song-1,
+#item-3:checked~.cards #song-2 {
+    transform: translatex(-40%) scale(.8);
+    opacity: .4;
+    z-index: 0;
+}
+
+#item-1:checked~.cards #song-2,
+#item-2:checked~.cards #song-3,
+#item-3:checked~.cards #song-1 {
+    transform: translatex(40%) scale(.8);
+    opacity: .4;
+    z-index: 0;
+}
+
+#item-1:checked~.cards #song-1,
+#item-2:checked~.cards #song-2,
+#item-3:checked~.cards #song-3 {
+    transform: translatex(0) scale(1);
+    opacity: 1;
+    z-index: 1;
+
+    img {
+        box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+    }
+}
+
+.player {
+    background-color: #244bbf;
+    border-radius: 8px;
+    min-width: 320px;
+    padding: 16px 10px;
+}
+
+.upper-part {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    height: 36px;
+    overflow: hidden;
+}
+
+.play-icon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.song-info {
+    width: calc(100% - 32px);
+    display: block;
+}
+
+.song-info .title {
+    color: white;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.sub-line {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.subtitle,
+.time {
+    font-size: 12px;
+    line-height: 16px;
+    color: #00e1ff;
+}
+
+.time {
+    font-size: 12px;
+    line-height: 16px;
+    color: #ffffff;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+.progress-bar {
+    height: 3px;
+    width: 100%;
+    background-color: #e9efff;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress {
+    display: block;
+    position: relative;
+    width: 60%;
+    height: 100%;
+    background-color: #ff8f2d;
+    border-radius: 6px;
+}
+
+.info-area {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 30px;
+    transition: transform .4s ease-in;
+}
+
+#item-2:checked~.player #test {
+    transform: translateY(0);
+}
+
+#item-2:checked~.player #test {
+    transform: translateY(-40px);
+}
+
+#item-3:checked~.player #test {
+    transform: translateY(-80px);
+}
+
+select option[disabled] {
+    color: #777777;
+}
+
+.insert {
+    margin-top: 0.1%;
+    margin-bottom: 0.1%;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-radius: 2rem;
+    padding: 2%;
+}
+
+.inserirFoto {
+    width: 240px;
+    height: 240px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.iconeCamera {
+    max-width: 240px;
+    max-height: 240px;
+    min-width: 240px;
+    min-height: 240px;
+
+}
+
+.inserirFoto:hover {
+    outline: 1px inset #244bbf;
+    box-shadow: 0 0 13px rgb(36, 75, 191, 1);
+}
+
+.inserirFoto:hover .addFoto {
+    margin-top: -120px !important;
+    transition-duration: 1s;
+}
+
+.custom-file-input {
+    display: inline-block;
+    background-color: #f2f2f2;
+    cursor: pointer;
+
+
+}
+
+.real-file-input {
+    display: none;
+
+    /* Esconde o input de arquivo real */
+}
+
+.custom-file-input2 {
+    display: inline-block;
+    background-color: #f2f2f2;
+    cursor: pointer;
+
+}
+
+.real-file-input2 {
+    display: none;
+    /* Esconde o input de arquivo real */
+}
+
+/* Inserir Arquivo */
+
+
+.inserirArquivo {
+    width: 160px;
+    height: 160px;
+    background-color: white;
+    align-items: center;
+    overflow: hidden;
+}
+
+.iconeUparArqui {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.iconeUparArquiNone {
+    display: none;
+}
+
+.inserirArquivo:hover {
+    outline: 1px inset #244bbf;
+    box-shadow: 0 0 13px rgb(36, 75, 191, 1);
+}
+
+.inserirArquivo:hover .addMusica {
+    margin-top: -80px !important;
+    transition-duration: 1s;
+}
+
+.imagem-container {
+    display: flex;
+    justify-content: center;
+    /* Alinhamento horizontal */
+    align-items: center;
+    /* Alinhamento vertical */
+    height: 100%;
+    /* Preenchimento total da altura da coluna */
+}
+
+.nomeDaFaixa {
+    padding: 10px;
+    border: #FFFFFF;
+    width: 100%;
+    height: 20%;
+    margin-top: 15%;
+}
+
+.nomeDaFaixa:focus {
+    outline: 1px inset #244bbf;
+    box-shadow: 0 0 13px rgb(36, 75, 191, 1);
+}
+
+.nomeDaFaixa:hover {
+    outline: 1px inset #244bbf;
+    box-shadow: 0 0 13px rgb(36, 75, 191, 1);
+}
+
+.selectGeneros {
+    padding: 10px;
+    border: #FFFFFF;
+    width: 100%;
+    height: 20%;
+    margin-bottom: 15%;
+    color: #646b68;
+}
+
+.selectGeneros.selected {
+    color: #000000;
+    /* Defina a cor desejada */
+}
+
+.selectGeneros:focus {
+    outline: 1px inset #244bbf;
+    box-shadow: 0 0 13px rgb(36, 75, 191, 1);
+}
+
+.selectGeneros:hover {
+    outline: 1px inset #244bbf;
+    box-shadow: 0 0 13px rgb(36, 75, 191, 1);
+}
+
+.descricao {
+    width: 100%;
+    height: 250px;
+    border: #FFFFFF;
+}
+
+.descricao:focus {
+    outline: 1px inset #244bbf;
+    box-shadow: 0 0 13px rgb(36, 75, 191, 1);
+}
+
+.descricao:hover {
+    outline: 1px inset #244bbf;
+    box-shadow: 0 0 13px rgb(36, 75, 191, 1);
+}
+
+.rowEspacinho {
+    margin-top: 4%;
+}
+
+.tituloSelecione {
+    font-size: 20pt;
+    text-align: center;
+}
+
+
+
+.configButton {
+    margin-top: 16px;
+    padding: 10px 20px;
+    background-color: #244bbf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.configButton:hover {
+    background-color: #FFFFFF;
+    outline: 1px inset #244bbf;
+    box-shadow: 0 0 13px rgb(36, 75, 191, 1);
+    color: #244bbf;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif
+}
+
+/* Faixas pretas insert */
+
+.addFoto {
+    background-color: black;
+    opacity: 70%;
+    align-items: baseline;
+    text-align: center;
+    width: 240px;
+    height: 240px;
+    color: white;
+    padding-top: 1rem;
+    font-size: 20pt;
+}
+
+.addMusica {
+    background-color: black;
+    opacity: 70%;
+    align-items: baseline;
+    text-align: center;
+    width: 160px;
+    height: 160px;
+    color: white;
+    padding-top: 1rem;
+    font-size: 12pt;
+}
+
+.btn-play-insert {
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    transition: 0.4s;
+    overflow: hidden;
+}
+
+.btn-pause-insert {
+    display: none;
+}
+
+
+.letrasRadio {
+    font-size: 16pt;
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+
+.letrasRadio label {
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.configRadio {
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border: 3px solid white;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.configRadio::before {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    background: #244bbf;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 500ms ease-in-out;
+}
+
+.configRadio:checked:before {
+    opacity: 1;
+}
+
+.configRadio:focus {
+    box-shadow: 0 0 8px #244bbf;
+    outline: 1px inset #244bbf;
+}
+
+.configRadio:hover {
+    outline: 1px inset #244bbf;
+    box-shadow: 0 0 13px rgb(36, 75, 191, 1);
+}
+
+
+
+/* mensagem AVISO CAMPO */
+
+
+#warningMessage {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #ff8f2d;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    width: 400px;
+    height: 70px;
+}
+
+
+/* SOBRE */
+
+.sobreRetangulo {
+    width: 360px;
+    height: 600px;
+    background-color: #ff8f2d;
+}
+
+.sobre-quadradinho {
+    width: 90%;
+    height: 560px;
+    background-color: #244bbf;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 80px;
+    padding-top: 40px;
+    overflow: hidden;
+}
+
+.sobre-quadradinho:hover {
+    outline: 2px inset #ff8f2d;
+    box-shadow: 0 0 13px #ff8f2d;
+    overflow-y: auto;
+}
+
+
+
+.foto-sobre {
+    width: 50%;
+    height: 45%;
+    background-color: #ff8f2d;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.fotoNossaSobre {
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.textoSobre {
+    color: white;
+    text-align: left;
+    font-size: 14pt;
+    margin: 10px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.textoSobreBold {
+    font-weight: bold;
+    font-size: 16pt;
+    color: #ff8f2d;
+    font-family: 'Rubik', sans-serif;
+}
+
+.sobreQuadrado {
+    background-color: #244bbf;
+    width: 100%;
+    height: 31rem;
+    margin-top: 10%;
+    margin-bottom: 0.1%;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-radius: 2rem;
+    padding: 2%;
+    overflow: hidden;
+}
+
+.sobreQuadrado:hover .textSobre {
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+
+
+.sobreNos {
+    color: white;
+    text-align: justify;
+    font-size: 13pt;
+    font-family: 'Rubik', sans-serif;
+    margin: 10px;
+    text-indent: 25px;
+}
+
+.sobreDestaque {
+    font-weight: bold;
+    font-size: 13pt;
+    color: #ff8f2d;
+    font-family: 'Rubik', sans-serif;
+}
+
+.fundoCadastrar {
+    background-size: cover;
+    /* Para cobrir todo o espaço da div */
+    background-position: center;
+    /* Centralizar a imagem */
+    min-width: 100%;
+    height: 500px;
+    /* Defina a altura desejada */
+}
+
+.quadradoEntrar {
+    height: 70vh;
+    border-right: 2px solid white;
+
+}
+
+.quadrado2Entrar {
+    height: 70vh;
+    border-left: 2px solid white;
+
+}
+
+.bnt-entrar-entrar {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #ff8f2d;
+    color: white;
+    height: 40px;
+    border: none;
+    margin-top: 5%;
+    font-weight: bold;
+}
+
+.bnt-entrar-entrar:hover{
+    background-color: #ffb26f;
+}
+
+.sublinhado {
+    color: white;
+    text-decoration: none;
+    font-weight: bold
+}
+
+.sublinhado:hover {
+    text-decoration-line: underline;
+}
+
+/* PG ARTISTA */
+
+.banner-artista{
+    width: 100%;
+    height: 250px;
+    background-color: #646b68;
+    z-index: 1;
+}
+
+.img-banner{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    z-index: 1;
+}
+
+.foto-artista{
+    width: 200px;
+    height: 200px;
+    border:3px solid #000000 ;
+    margin-top: -100px !important;
+    background-color: #244bbf ;
+    z-index: 3;
+    position: absolute; 
+    margin-left: 1%
+}
+
+.ft-artista{
+    max-height: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    min-height: 100%;
+}
+
+.nomeDoArtista{
+    font-size: 32pt;
+    color: white;
+    text-align: left;
+    margin-left: 7px;
+}
+
+.btn-seguir{
+    width: 12rem;
+    height: 2rem;
+    font-size: 14pt;
+    color: white;
+    background-color: #ff8f2d;
+    border: none;
+    margin-top: 20px;
+}
+
+.btn-seguir:hover{
+    background-color: #ffb26f;
+}
+
+.infosArtista{
+    font-size: 14pt;
+    color: white;
+    margin-top: 20px;
+}
+
+.faixas{
+    margin: 20px;
+}
+
+
+/* Genero */
+.banner-genero{
+    width: 100%;
+    height: 300px;
+    background-color: #646b68;
+    z-index: 1;
+}
+
+.text-genero{
+    z-index: 2;
+    font-size: 60pt;
+    color: white;
+    margin-top: -110px;
+    margin-left: 20px;
+}
+
+.boladinho{
+    width: 198px;
+    height: 198px;
+    background-color: #60A1F5;
+    margin-left: 66px;
+    margin-right: 66px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.text-genero2{
+    font-size: 28pt;
+    color: #000000;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.mini-perf{
+    width: 120px;
+    height: 150px;
+    margin-top: 0px;
+    border-radius: 5%;
+    position: absolute;
+    display: flex;
+    overflow: hidden;
+    margin-top: 25px;
+    transition: ease-out 0.7s;
+}
+
+.mini-perf-ft{
+    width: 70px;
+    height: 70px;
+    border: #000000 solid 3px;
+    border-radius: 100%;
+    position: absolute;
+    margin-left: 25px;
+    margin-top: 5px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.mini-perf-nome{
+    width: 250px;
+    font-size: 12pt;
+    text-align: center;
+    padding-top: 300px;
+    transition: 0.7s;
+}
+
+.mini-perf:hover .mini-perf-nome{
+    width: 250px;
+    font-size: 12pt;
+    text-align: center;
+    padding-top: 100px;
+    transition: 0.7s;
+}
+
+.mini-perf:hover{
+    background-color: #244bbf;
+    color: white;
+    transition: ease-in 0.7s;
+}
+
+.mini-perf:hover .mini-perf-ft{
+    background-color: white;
+    transition: ease-in 0.7s;
+}
+/* CARROSSEL */
+
+.play-car{
+display: none;
+}
+
+.card:hover 
+.play-car{
+    display: block;
+    position: fixed;
+    cursor: pointer;
+    width: 250px;
+    height: 250px;
+    margin-left: 25%;
+    margin-top: 20%;
+    transition: ease-in 5s;
+    overflow: hidden;
+    color: #777777;
+}
+
+.pause-car{
+    display: none;
+}
